@@ -15,6 +15,12 @@
     <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/ico" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+    <link href="{% static 'image_processing/dist/css/image_processing.css' %}" rel="stylesheet">
+
+
     
     </head>
 
@@ -30,28 +36,109 @@
             </div>
         </div> -->
 
-        <nav class="navbar" style="background-color: #e3f2fd;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href=".">
-                    <div class="row">
-                        <div class="col-2">
-                            <img src="{% static 'img/favicon.png' %}" alt="Logo" width="32" height="32">
-                        </div>
-
-                        <div class="col-10 text-center">
-                            Basic Image Processing
-                        </div>
-                        
+        <nav class="navbar border-bottom">
+            <a class="navbar-brand mx-3" href=".">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="{% static 'img/favicon.png' %}" alt="Logo" width="32" height="32">
                     </div>
-                </a>
-            </div>
+
+                    <div class="col-10 text-center">
+                        Basic Image Processing
+                    </div>
+                    
+                </div>
+            </a>
         </nav>
 
         <!-- Main content -->
-        <div class="content bg-body-tertiary">
-            <div class="container-fluid">
+        <div class="content container-fluid my-2">
 
+                <div class="row">
 
+                    <div class="col">
+
+                        <div class="card w-100 rounded-0">
+                            <div class="card-body p-0">
+
+                                <div id="dropzone">
+                                    
+                                    <form id="dropZoneForm" class="dropzone needsclick dz-clickable dropzone-previews" action="#" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                         <div class="dz-message mx-auto">
+                                            <i class="fas fa-cloud-upload-alt fa-3x text-primary"></i>
+                                            <span class="d-block">
+                                                Drag and Drop images here to upload!
+                                            </span>
+                                                
+                                         </div>
+                                        <!-- <input hidden name="file" type="file" multiple/> -->
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div> 
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="row my-2 pfix">
+
+                    <div class="col-2 pfix">
+
+                        <div class="card rounded-0 fit-b">
+                            {% if images %}
+                                <div class="card-body p-0">
+                                    <ul class="list-group rounded-0 m-0">
+                                        <li class="list-group-item active">Cras justo odio</li>
+
+                                      {% for img in images %}
+                                        <li class="list-group-item">{{img.name}} </li>
+                                      {% endfor %}
+
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div class="card-body p-0 align-items-center d-flex justify-content-center">
+                                    <p class="text-center">No Image Availiable</p> 
+                                </div>
+                            {% endif %}
+                        </div>       
+                        
+                    </div>
+
+                    <div class="col pfix">
+                        <div class="card rounded-0 fit-b">
+                            <div class="card-body align-items-center d-flex justify-content-center p-0">
+                                <p class="text-center">No Original Image Availiable</p> 
+
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="col pfix">
+                        <div class="card rounded-0 fit-b">
+                            <div class="card-body align-items-center d-flex justify-content-center p-0">
+                                <p class="text-center">No Processed Image Availiable</p> 
+
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="col-2 pfix">
+                        <div class="card rounded-0 fit-b">
+                            <div class="card-body align-items-center d-flex justify-content-center p-0">
+                                <p class="text-center">No Filters Availiable</p> 
+
+                            </div>
+                        </div> 
+                    </div>
+
+                    
+
+                </div>
 
 
             </div>
@@ -65,6 +152,12 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+        <script src="https://kit.fontawesome.com/e3afe03ca6.js" crossorigin="anonymous"></script>
+
+        <script src="{% static 'image_processing/dist/js/image_processing.js' %}"></script>
 
     </body>
 </html>
