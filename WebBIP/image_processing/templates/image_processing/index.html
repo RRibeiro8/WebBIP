@@ -88,14 +88,13 @@
 
                     <div class="col-2 pfix">
 
-                        <div class="card rounded-0 fit-b">
+                        <div class="card rounded-0 fit-b" id="card_img_list">
                             {% if images %}
                                 <div class="card-body p-0">
-                                    <ul class="list-group rounded-0 m-0">
-                                        <li class="list-group-item active">Cras justo odio</li>
+                                    <ul class="list-group rounded-0 m-0" id="img_list">
 
                                       {% for img in images %}
-                                        <li class="list-group-item">{{img.name}} </li>
+                                        <li class="list-group-item" href="#" id="{{img.name}}" data-pk="{{img.pk}}">{{img.name}} </li>
                                       {% endfor %}
 
                                     </ul>
@@ -111,16 +110,19 @@
 
                     <div class="col pfix">
                         <div class="card rounded-0 fit-b">
-                            <div class="card-body align-items-center d-flex justify-content-center p-0">
-                                <p class="text-center">No Original Image Availiable</p> 
-
+                            <div class="card-body align-items-center d-flex justify-content-center p-0" id="original">
+                                {% if images %}
+                                    <p class="text-center">Select an image</p> 
+                                {% else %}
+                                    <p class="text-center">No Images Availiable</p> 
+                                {% endif %}
                             </div>
                         </div> 
                     </div>
 
                     <div class="col pfix">
                         <div class="card rounded-0 fit-b">
-                            <div class="card-body align-items-center d-flex justify-content-center p-0">
+                            <div class="card-body align-items-center d-flex justify-content-center p-0" id="processed">
                                 <p class="text-center">No Processed Image Availiable</p> 
 
                             </div>
