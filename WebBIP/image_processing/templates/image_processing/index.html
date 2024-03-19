@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
-    <link href="{% static 'image_processing/dist/css/image_processing.css' %}" rel="stylesheet">
+    <link href="{% static 'image_processing/css/image_processing.css' %}" rel="stylesheet">
 
 
     
@@ -131,8 +131,49 @@
 
                     <div class="col-2 pfix">
                         <div class="card rounded-0 fit-b">
-                            <div class="card-body align-items-center d-flex justify-content-center p-0">
-                                <p class="text-center">No Filters Availiable</p> 
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <p class="h6">Rotation</p>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                      <label class="btn btn-primary">
+                                        <input type="radio" name="rotation" id="rotate90" autocomplete="off"> 90°
+                                      </label>
+                                      <label class="btn btn-primary">
+                                        <input type="radio" name="rotation" id="rotate180" autocomplete="off"> 180°
+                                      </label>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <p class="h6">Flips</p>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                      <label class="btn btn-primary">
+                                        <input type="radio" name="flip" id="fliph" autocomplete="off">Horizontal
+                                      </label>
+                                      <label class="btn btn-primary">
+                                        <input type="radio" name="flip" id="flipv" autocomplete="off">Vertical
+                                      </label>
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="row mb-3 mx-1">
+                                    <label for="contrast" class="form-label h6">
+                                        Contrast
+                                        <span class="float-end" id="rangeval_contrast">0</span>
+                                    </label>
+                                    <input type="range" class="form-range" id="contrast" value="0" min="-100" max="100" step="1" oninput="$('#rangeval_contrast').html($(this).val())">
+                                   
+                                </div>
+
+                                <div class="row mb-3 mx-1">
+                                    <label for="brightness" class="form-label h6">
+                                        Brightness
+                                        <span class="float-end" id="rangeval_brightness">0</span>
+                                    </label>
+                                    <input type="range" class="form-range" id="brightness" value="0" min="-100" max="100" step="1" oninput="$('#rangeval_brightness').html($(this).val())">
+                                   
+                                </div>
 
                             </div>
                         </div> 
@@ -159,7 +200,7 @@
 
         <script src="https://kit.fontawesome.com/e3afe03ca6.js" crossorigin="anonymous"></script>
 
-        <script src="{% static 'image_processing/dist/js/image_processing.js' %}"></script>
+        <script src="{% static 'image_processing/js/image_processing.js' %}"></script>
 
     </body>
 </html>

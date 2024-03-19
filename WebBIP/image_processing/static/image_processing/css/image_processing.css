@@ -1,0 +1,32 @@
+html, body {
+	margin: 0;
+    height: 100%;
+}
+
+body {
+    text-align: left;
+    background-color: #f5f6fa;
+}
+
+.navbar {
+	background-color: #fff;
+}
+
+.dropzone {
+	height: 16vh;
+	min-height: 0px !important;
+	overflow-y: auto;
+    border: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.fit-b {
+	height: 75vh;
+	overflow-y: auto;
+}
+
+
+.pfix {
+    padding-right: 0px !important;
+}
