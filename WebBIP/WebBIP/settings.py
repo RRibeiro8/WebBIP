@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'WebBIP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'webbip',
         'USER': 'admin',
         'PASSWORD': 'admin',
